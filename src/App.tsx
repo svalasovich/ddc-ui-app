@@ -53,22 +53,23 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo"/>
+                <span> Upload encrypted to DDC</span>
+                <div>
                 {accounts.map((e) => (
-                    <button key={e.address} onClick={() => extensionUpload(e)} className="App-button">
-                        Upload encrypted to DDC For '{e.meta.name}'
-                    </button>
+                    <button key={e.address} onClick={() => extensionUpload(e)} className="App-button">{e.meta.name}</button>
                 ))}
                 <button onClick={() => uploadMain()} className="App-button">Upload encrypted to DDC For MAIN</button>
+                </div>
+                <span>Create and read bucket</span>
+                <div>
+                    {accounts.map((e) => (
+                        <button key={e.address} onClick={() => bucket(e)} className="App-button">{e.meta.name}</button>
+                    ))}
+                    <button onClick={() => mainBucket()} className="App-button">MAIN</button>
+                </div>
             </header>
 
-            <div className="App-header">
-                {accounts.map((e) => (
-                    <button key={e.address} onClick={() => bucket(e)} className="App-button">
-                        Create and read bucket for '{e.meta.name}'
-                    </button>
-                ))}
-                <button onClick={() => mainBucket()} className="App-button">Create and read bucket for 'MAIN'</button>
-            </div>
+
         </div>
     );
 }
